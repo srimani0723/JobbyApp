@@ -1,9 +1,28 @@
 .loader-container {
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+
+  padding-right: 4%;
+  padding-left: 4%;
+}
+
+.jobs-section {
+  display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  min-height: 100vh;
+.jobs-filters-section {
+  margin: 20px;
+  margin-top: 0px;
+}
+
+@media (min-width: 576px) {
+  .jobs-section {
+    width: 70%;
+  }
 }
 
 .input-box {
@@ -15,6 +34,8 @@
   border: 1px solid #b6c5ff;
   border-radius: 5px;
   margin-bottom: 5%;
+
+  max-width: 400px;
 }
 .search-ip {
   color: white;
@@ -41,7 +62,19 @@
   display: flex;
   flex-direction: column;
 
-  padding: 4%;
+  padding-right: 4%;
+  padding-left: 4%;
+}
+
+.no-jobs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-right: 4%;
+  padding-left: 4%;
+
+  margin-top: 5%;
 }
 
 .jobs-container-all {
@@ -71,4 +104,21 @@
 
 .jobs-container-all {
   display: flex;
+}
+.no-jobs-img {
+  width: 80%;
+  max-width: 450px;
+}
+
+.no-jobs-h1 {
+  color: white;
+}
+.no-jobs-desc {
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .jobs-container-all {
+    flex-direction: column;
+  }
 }

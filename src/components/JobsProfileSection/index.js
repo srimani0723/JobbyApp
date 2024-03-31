@@ -71,7 +71,6 @@ class JobsProfileSection extends Component {
 
     const {employmentType, search, minimumPackage} = this.state
     const jwtToken = Cookies.get('jwt_token')
-    console.log(search)
     const url = `https://apis.ccbp.in/jobs?employment_type=${employmentType.join()}&minimum_package=${minimumPackage}&search=${search}`
     const options = {
       headers: {
@@ -107,6 +106,23 @@ class JobsProfileSection extends Component {
 
   renderLoader = () => (
     <div className="loader-container" data-testid="loader">
+      <div className="input-box">
+        <input
+          type="search"
+          className="search-ip"
+          placeholder="search"
+          onChange={this.getInput}
+          onKeyDown={this.onKeyDown}
+        />
+        <button
+          type="button"
+          data-testid="searchButton"
+          className="search-icon-btn"
+          onClick={this.getJobsList}
+        >
+          .<BsSearch className="search-icon" />
+        </button>
+      </div>
       <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
     </div>
   )
@@ -130,7 +146,7 @@ class JobsProfileSection extends Component {
       <div className="jobs-container">
         <div className="input-box">
           <input
-            type="text"
+            type="search"
             className="search-ip"
             placeholder="search"
             onChange={this.getInput}
@@ -155,7 +171,7 @@ class JobsProfileSection extends Component {
       <div className="jobs-container">
         <div className="input-box">
           <input
-            type="text"
+            type="search"
             className="search-ip"
             placeholder="search"
             onChange={this.getInput}
@@ -165,10 +181,21 @@ class JobsProfileSection extends Component {
             type="button"
             data-testid="searchButton"
             className="search-icon-btn"
-            onClick={this.onKeyDown}
+            onClick={this.getJobsList}
           >
             .<BsSearch className="search-icon" />
           </button>
+        </div>
+        <div className="no-jobs-container">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
+            alt="no jobs"
+            className="no-jobs-img"
+          />
+          <h1 className="no-jobs-h1">No Jobs Found</h1>
+          <p className="no-jobs-desc">
+            We could not find any jobs. Try other filters.
+          </p>
         </div>
       </div>
     )
@@ -188,7 +215,7 @@ class JobsProfileSection extends Component {
       <button
         type="button"
         className="jobs-failure-button"
-        onClick={this.getJobDetails}
+        onClick={this.getJobsList}
       >
         Retry
       </button>
@@ -210,14 +237,29 @@ class JobsProfileSection extends Component {
     }
   }
 
+  changeSalaryRange = salary => {
+    this.setState({minimumPackage: salary}, this.getJobsList)
+  }
+
+  changeEmploymentType = type => {
+    this.setState(
+      prev => ({employmentType: [...prev.employmentType, type]}),
+      this.getJobsList,
+    )
+  }
+
   render() {
     return (
       <div className="jobs-container-all">
-        <JobsFilterGroup
-          employmentTypesList={employmentTypesList}
-          salaryRangesList={salaryRangesList}
-        />
-        {this.renderJobsDisplay()}
+        <div className="jobs-filters-section">
+          <JobsFilterGroup
+            employmentTypesList={employmentTypesList}
+            salaryRangesList={salaryRangesList}
+            changeEmploymentType={this.changeEmploymentType}
+            changeSalaryRange={this.changeSalaryRange}
+          />
+        </div>
+        <div className="jobs-section">{this.renderJobsDisplay()}</div>
       </div>
     )
   }
