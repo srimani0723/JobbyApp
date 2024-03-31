@@ -1,0 +1,27 @@
+.not-found-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+
+  background-color: #000000;
+}
+
+.not-found-h1 {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.not-found-p {
+  color: #cbd5e1;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.not-found-img {
+  width: 50%;
+  max-width: 300px;
+}

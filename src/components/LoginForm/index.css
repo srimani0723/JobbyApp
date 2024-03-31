@@ -1,0 +1,81 @@
+.loginform-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+
+  background-color: #000000;
+}
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 450px;
+  background-color: #272727;
+}
+
+@media (max-width: 768px) {
+  .loginform {
+    width: 90%;
+  }
+}
+
+.form {
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+}
+
+.login-btn {
+  background-color: #6366f1;
+  border: 0px;
+
+  cursor: pointer;
+  outline: none;
+
+  padding: 10px;
+  color: #ffffff;
+  font-weight: bold;
+
+  border-radius: 5px;
+}
+
+.label {
+  color: white;
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.input {
+  border: 1px solid #64748b;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: transparent;
+  padding: 10px;
+  margin-bottom: 25px;
+
+  cursor: pointer;
+  outline: none;
+
+  color: white;
+  font-weight: 500;
+}
+
+.logo {
+  width: 50%;
+  margin-bottom: 25px;
+}
+
+.error {
+  color: #ff0b37;
+  font-size: smaller;
+  font-weight: 500;
+  margin-top: 5px;
+}
